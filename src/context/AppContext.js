@@ -25,7 +25,7 @@ export const AppProvider = ({ children }) => {
             const parsedUserData = JSON.parse(userData);
 
             const data = async () => {
-                const response = await fetch(`http://localhost:5000/user/verify`, {
+                const response = await fetch(`https://data.tripknock.in/user/verify`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

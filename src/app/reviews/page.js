@@ -63,7 +63,7 @@ export default function ReviewsPage() {
       }
 
       const adminData = JSON.parse(authCookie);
-      const response = await fetch('http://localhost:5000/reviews/all', {
+      const response = await fetch('https://data.tripknock.in/reviews/all', {
         headers: {
           'admin': adminData.email
         }
@@ -86,7 +86,7 @@ export default function ReviewsPage() {
 
   const fetchDestinations = async () => {
     try {
-      const response = await fetch("http://localhost:5000/package/load");
+      const response = await fetch("https://data.tripknock.in/package/load");
       const result = await response.json();
 
       if (result.destination) {
@@ -193,7 +193,7 @@ export default function ReviewsPage() {
           }
         }
 
-        response = await fetch('http://localhost:5000/reviews/edit-with-media', {
+        response = await fetch('https://data.tripknock.in/reviews/edit-with-media', {
           method: 'POST',
           headers: {
             'admin': adminData.email
@@ -202,7 +202,7 @@ export default function ReviewsPage() {
         });
       } else {
         // Use JSON for text-only updates
-        response = await fetch('http://localhost:5000/reviews/edit', {
+        response = await fetch('https://data.tripknock.in/reviews/edit', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -258,7 +258,7 @@ export default function ReviewsPage() {
       }
 
       const adminData = JSON.parse(authCookie);
-      const response = await fetch(`http://localhost:5000/reviews/delete/${deleteReview.id}`, {
+      const response = await fetch(`https://data.tripknock.in/reviews/delete/${deleteReview.id}`, {
         method: 'DELETE',
         headers: {
           'admin': adminData.email
@@ -393,7 +393,7 @@ export default function ReviewsPage() {
         }
       }
 
-      const response = await fetch('http://localhost:5000/reviews/submit', {
+      const response = await fetch('https://data.tripknock.in/reviews/submit', {
         method: 'POST',
         headers: {
           'admin': adminData.email
@@ -681,7 +681,7 @@ export default function ReviewsPage() {
                     <h3 className="text-lg font-medium text-gray-900">Profile Image</h3>
                     <div className="mt-2">
                       <img
-                        src={`http://localhost:5000${viewReview.profile_image_url}`}
+                        src={`https://data.tripknock.in${viewReview.profile_image_url}`}
                         alt="Profile"
                         className="w-20 h-20 rounded-full object-cover border border-gray-200"
                         onError={(e) => {
@@ -721,7 +721,7 @@ export default function ReviewsPage() {
                       {viewReview.review_images.map((imageObj, index) => (
                         <img
                           key={index}
-                          src={`http://localhost:5000${imageObj.url || imageObj}`}
+                          src={`https://data.tripknock.in${imageObj.url || imageObj}`}
                           alt={`Review image ${index + 1}`}
                           className="w-full h-24 object-cover rounded-lg border border-gray-200"
                           onError={(e) => {
@@ -741,7 +741,7 @@ export default function ReviewsPage() {
                     {viewReview.image_url ? (
                       <div className="mt-4">
                         <img
-                          src={`http://localhost:5000${viewReview.image_url}`}
+                          src={`https://data.tripknock.in${viewReview.image_url}`}
                           alt="Review"
                           className="max-w-full h-auto rounded-lg border border-gray-200"
                           onError={(e) => {
@@ -753,7 +753,7 @@ export default function ReviewsPage() {
                     ) : viewReview.video_url ? (
                       <div className="mt-4">
                         <video
-                          src={`http://localhost:5000${viewReview.video_url}`}
+                          src={`https://data.tripknock.in${viewReview.video_url}`}
                           className="max-w-full h-auto rounded-lg border border-gray-200"
                           controls
                           onError={(e) => {
@@ -881,7 +881,7 @@ export default function ReviewsPage() {
                     </label>
                     <div className="border rounded-lg p-2 bg-gray-50">
                       <img
-                        src={`http://localhost:5000${editReview.thumbnail_url}`}
+                        src={`https://data.tripknock.in${editReview.thumbnail_url}`}
                         alt="Video Thumbnail"
                         className="w-32 h-20 object-cover rounded"
                         onError={(e) => {
@@ -903,7 +903,7 @@ export default function ReviewsPage() {
                       {editReview.review_images.map((imageObj, index) => (
                         <img
                           key={index}
-                          src={`http://localhost:5000${imageObj.url || imageObj}`}
+                          src={`https://data.tripknock.in${imageObj.url || imageObj}`}
                           alt={`Review image ${index + 1}`}
                           className="w-full h-20 object-cover rounded"
                           onError={(e) => {
@@ -923,7 +923,7 @@ export default function ReviewsPage() {
                     </label>
                     <div className="border rounded-lg p-2 bg-gray-50">
                       <video
-                        src={`http://localhost:5000${editReview.video_url}`}
+                        src={`https://data.tripknock.in${editReview.video_url}`}
                         className="max-w-xs max-h-40"
                         controls
                         onError={(e) => {

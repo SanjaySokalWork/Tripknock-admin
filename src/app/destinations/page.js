@@ -46,7 +46,7 @@ export default function DestinationsPage() {
     setLoading('fetchDestinations', true, 'Loading destinations...');
     async function fetchAll() {
       try {
-        const response = await fetch('http://localhost:5000/destination/all');
+        const response = await fetch('https://data.tripknock.in/destination/all');
         const data = await response.json();
         if (data.status === false) {
           showError('Error fetching destinations: ' + data.message);
@@ -110,7 +110,7 @@ export default function DestinationsPage() {
   const confirmDelete = async (id) => {
     setLoading('deleteDestination', true, 'Deleting destination...');
     try {
-      let res = await fetch(`http://localhost:5000/destination/delete`, {
+      let res = await fetch(`https://data.tripknock.in/destination/delete`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

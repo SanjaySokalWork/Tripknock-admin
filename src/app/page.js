@@ -35,7 +35,7 @@ export default function Home() {
   const fetchStats = async () => {
     try {
       setLoading('fetchStats', true, 'Loading dashboard stats...');
-      const response = await fetch('http://localhost:5000/stats/dashboard');
+      const response = await fetch('https://data.tripknock.in/stats/dashboard');
       if (!response.ok) {
         throw new Error('Failed to fetch stats');
       }

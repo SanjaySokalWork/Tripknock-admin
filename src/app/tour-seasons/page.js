@@ -31,7 +31,7 @@ export default function TourSeasons() {
   const fetchSeasons = async () => {
     try {
       setLoading('fetchSeasons', true, 'Loading seasons...');
-      const res = await fetch('http://localhost:5000/season/all');
+      const res = await fetch('https://data.tripknock.in/season/all');
       const data = await res.json();
       
       if (data.status === false) {
@@ -87,7 +87,7 @@ export default function TourSeasons() {
 
     try {
       const endpoint = editItem ? 'update' : 'create';
-      const res = await fetch(`http://localhost:5000/season/${endpoint}`, {
+      const res = await fetch(`https://data.tripknock.in/season/${endpoint}`, {
         method: 'POST',
         headers: {
           'admin': JSON.parse(Cookies.get('tk_auth_details')).email
@@ -114,7 +114,7 @@ export default function TourSeasons() {
   const confirmDelete = async () => {
     setIsSubmitting(true);
     try {
-      const res = await fetch('http://localhost:5000/season/delete', {
+      const res = await fetch('https://data.tripknock.in/season/delete', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -165,7 +165,7 @@ export default function TourSeasons() {
           >
             <div className="aspect-w-16 aspect-h-9 bg-secondary-100">
               <img
-                src={"http://localhost:5000/uploads/" + item.image}
+                src={"https://data.tripknock.in/uploads/" + item.image}
                 alt={item.name}
                 className="w-full h-full object-cover"
               />

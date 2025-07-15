@@ -146,7 +146,7 @@ export default function TagsPage() {
   const fetchTags = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/blog/tags/all');
+      const response = await fetch('https://data.tripknock.in/blog/tags/all');
       if (!response.ok) {
         throw new Error('Failed to fetch tags');
       }
@@ -181,7 +181,7 @@ export default function TagsPage() {
 
       const adminEmail = JSON.parse(authCookie).email;
 
-      const response = await fetch('http://localhost:5000/blog/tags/create', {
+      const response = await fetch('https://data.tripknock.in/blog/tags/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -224,7 +224,7 @@ export default function TagsPage() {
 
       const adminEmail = JSON.parse(authCookie).email;
 
-      const response = await fetch(`http://localhost:5000/blog/tags/update/${editingTag.id}`, {
+      const response = await fetch(`https://data.tripknock.in/blog/tags/update/${editingTag.id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -266,7 +266,7 @@ export default function TagsPage() {
 
       const adminEmail = JSON.parse(authCookie).email;
 
-      const response = await fetch(`http://localhost:5000/blog/tags/delete/${deleteTag.id}`, {
+      const response = await fetch(`https://data.tripknock.in/blog/tags/delete/${deleteTag.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

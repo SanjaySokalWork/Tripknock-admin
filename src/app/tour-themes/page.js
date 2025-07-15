@@ -31,7 +31,7 @@ export default function TourThemes() {
   const fetchData = async () => {
     try {
       setLoading('fetchThemes', true, 'Loading themes...');
-      const res = await fetch('http://localhost:5000/theme/all');
+      const res = await fetch('https://data.tripknock.in/theme/all');
       const data = await res.json();
       
       if (data.status === false) {
@@ -87,7 +87,7 @@ export default function TourThemes() {
 
     try {
       if (editItem !== null) {
-        const res = await fetch('http://localhost:5000/theme/update', {
+        const res = await fetch('https://data.tripknock.in/theme/update', {
           method: 'POST',
           headers: {
             'admin': JSON.parse(Cookies.get('tk_auth_details')).email
@@ -104,7 +104,7 @@ export default function TourThemes() {
           showError(`Failed to update theme: ${data.message || 'Unknown error'}`);
         }
       } else {
-        const res = await fetch('http://localhost:5000/theme/create', {
+        const res = await fetch('https://data.tripknock.in/theme/create', {
           method: 'POST',
           headers: {
             'admin': JSON.parse(Cookies.get('tk_auth_details')).email
@@ -132,7 +132,7 @@ export default function TourThemes() {
   const confirmDelete = async () => {
     setIsSubmitting(true);
     try {
-      const res = await fetch('http://localhost:5000/theme/delete', {
+      const res = await fetch('https://data.tripknock.in/theme/delete', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -183,7 +183,7 @@ export default function TourThemes() {
               >
                 <div className="aspect-w-16 aspect-h-9 bg-secondary-100">
                   <img
-                    src={"http://localhost:5000/uploads/" + item?.image}
+                    src={"https://data.tripknock.in/uploads/" + item?.image}
                     alt={item?.name}
                     className="w-full h-full object-cover"
                   />

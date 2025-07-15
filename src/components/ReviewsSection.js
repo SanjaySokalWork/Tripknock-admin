@@ -28,7 +28,7 @@ export default function ReviewsSection() {
   const fetchReviews = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/reviews/approved');
+      const response = await fetch('https://data.tripknock.in/reviews/approved');
       if (response.ok) {
         const data = await response.json();
         setReviews(data);
@@ -132,11 +132,11 @@ export default function ReviewsSection() {
         if (selectedFile) {
           submitData.append('image', selectedFile);
         }
-        endpoint = 'http://localhost:5000/reviews/add-with-image';
+        endpoint = 'https://data.tripknock.in/reviews/add-with-image';
       } else {
         // For video review, no rating or comment needed
         submitData.append('video', selectedFile);
-        endpoint = 'http://localhost:5000/reviews/add-with-video';
+        endpoint = 'https://data.tripknock.in/reviews/add-with-video';
       }
 
       const response = await fetch(endpoint, {
@@ -237,7 +237,7 @@ export default function ReviewsSection() {
                 {reviews[currentIndex].image_url ? (
                   <div className="w-20 h-20 rounded-full overflow-hidden mb-4">
                     <img
-                      src={`http://localhost:5000${reviews[currentIndex].image_url}`}
+                      src={`https://data.tripknock.in${reviews[currentIndex].image_url}`}
                       alt={reviews[currentIndex].name}
                       className="w-full h-full object-cover"
                       onError={(e) => {
@@ -275,7 +275,7 @@ export default function ReviewsSection() {
                 {reviews[currentIndex].image_url && (
                   <div className="mt-4">
                     <img
-                      src={`http://localhost:5000${reviews[currentIndex].image_url}`}
+                      src={`https://data.tripknock.in${reviews[currentIndex].image_url}`}
                       alt={`Review by ${reviews[currentIndex].name}`}
                       className="w-full max-w-md mx-auto max-h-60 object-contain rounded-lg"
                       onError={(e) => {
@@ -288,7 +288,7 @@ export default function ReviewsSection() {
                 {reviews[currentIndex].video_url && (
                   <div className="mt-4">
                     <video
-                      src={`http://localhost:5000${reviews[currentIndex].video_url}`}
+                      src={`https://data.tripknock.in${reviews[currentIndex].video_url}`}
                       className="w-full max-w-md mx-auto max-h-60 object-contain rounded-lg"
                       controls
                       onError={(e) => {
@@ -383,7 +383,7 @@ export default function ReviewsSection() {
                     {viewReview.image_url ? (
                       <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
                         <img
-                          src={`http://localhost:5000${viewReview.image_url}`}
+                          src={`https://data.tripknock.in${viewReview.image_url}`}
                           alt={viewReview.name}
                           className="w-full h-full object-cover"
                           onError={(e) => {
@@ -435,7 +435,7 @@ export default function ReviewsSection() {
                     {viewReview.image_url ? (
                       <div className="mt-4">
                         <img 
-                          src={`http://localhost:5000${viewReview.image_url}`} 
+                          src={`https://data.tripknock.in${viewReview.image_url}`} 
                           alt="Review" 
                           className="max-w-full h-auto rounded-lg border border-gray-200"
                           onError={(e) => {
@@ -447,7 +447,7 @@ export default function ReviewsSection() {
                     ) : viewReview.video_url ? (
                       <div className="mt-4">
                         <video 
-                          src={`http://localhost:5000${viewReview.video_url}`} 
+                          src={`https://data.tripknock.in${viewReview.video_url}`} 
                           className="max-w-full h-auto rounded-lg border border-gray-200"
                           controls
                           onError={(e) => {

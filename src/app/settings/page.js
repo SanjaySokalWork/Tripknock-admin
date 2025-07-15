@@ -53,7 +53,7 @@ export default function Settings() {
     e.preventDefault();
     setLoading(true);
 
-    let res = await fetch('http://localhost:5000/user/profile/update', {
+    let res = await fetch('https://data.tripknock.in/user/profile/update', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -85,7 +85,7 @@ export default function Settings() {
       setIsPasswordSuccess(false);
     }
     else {
-      let res = await fetch('http://localhost:5000/user/profile/update-password', {
+      let res = await fetch('https://data.tripknock.in/user/profile/update-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -97,7 +97,7 @@ export default function EditBlog({ params }) {
 
     const fetchBlogData = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/blog/${id}`);
+            const response = await fetch(`https://data.tripknock.in/blog/${id}`);
 
             if (!response.ok) {
                 throw new Error('Failed to fetch blog data');
@@ -162,7 +162,7 @@ export default function EditBlog({ params }) {
 
             // Set preview image if available
             if (data.image) {
-                setPreviewImages([`http://localhost:5000/uploads/${data.image}`]);
+                setPreviewImages([`https://data.tripknock.in/uploads/${data.image}`]);
             }
 
             setLoading(false);
@@ -175,7 +175,7 @@ export default function EditBlog({ params }) {
 
     const fetchCategories = async () => {
         try {
-            const response = await fetch('http://localhost:5000/blog/categories/all');
+            const response = await fetch('https://data.tripknock.in/blog/categories/all');
             if (response.ok) {
                 const data = await response.json();
                 // Transform data to match the expected format
@@ -194,7 +194,7 @@ export default function EditBlog({ params }) {
 
     const fetchBloggers = async () => {
         try {
-            const response = await fetch('http://localhost:5000/user/by-role/blogger');
+            const response = await fetch('https://data.tripknock.in/user/by-role/blogger');
             if (response.ok) {
                 const data = await response.json();
                 // Transform data to match the expected format
@@ -274,7 +274,7 @@ export default function EditBlog({ params }) {
             }
 
             // Send request to backend
-            const response = await fetch(`http://localhost:5000/blog/update/${id}`, {
+            const response = await fetch(`https://data.tripknock.in/blog/update/${id}`, {
                 method: 'POST',
                 headers: {
                     'admin': JSON.parse(Cookies.get('tk_auth_details')).email

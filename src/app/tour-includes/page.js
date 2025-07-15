@@ -36,7 +36,7 @@ export default function TourIncludes() {
   const fetchIncludes = async () => {
     try {
       setLoading('fetchIncludes', true, 'Loading includes...');
-      const response = await fetch('http://localhost:5000/include/all', {
+      const response = await fetch('https://data.tripknock.in/include/all', {
         method: 'GET',
         headers: {
           'admin': JSON.parse(Cookies.get('tk_auth_details')).email
@@ -92,7 +92,7 @@ export default function TourIncludes() {
 
     try {
       const endpoint = editItem ? 'update' : 'create';
-      const response = await fetch(`http://localhost:5000/include/${endpoint}`, {
+      const response = await fetch(`https://data.tripknock.in/include/${endpoint}`, {
         method: 'POST',
         headers: {
           'admin': JSON.parse(Cookies.get('tk_auth_details')).email
@@ -126,7 +126,7 @@ export default function TourIncludes() {
   const confirmDelete = async () => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('http://localhost:5000/include/delete', {
+      const response = await fetch('https://data.tripknock.in/include/delete', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -176,7 +176,7 @@ export default function TourIncludes() {
                 className="bg-white rounded-lg shadow-sm border border-secondary-200 p-4 flex flex-col items-center transition-all duration-200 hover:shadow-md hover:border-primary-200 hover:-translate-y-1 group"
               >
                 <div className="w-16 h-16 mb-3 rounded-full bg-primary-50 flex items-center justify-center group-hover:bg-primary-100 transition-colors">
-                  <img src={"http://localhost:5000/uploads/" + item.image} alt={item.name} className="w-8 h-8" />
+                  <img src={"https://data.tripknock.in/uploads/" + item.image} alt={item.name} className="w-8 h-8" />
                 </div>
                 <h3 className="text-center font-medium text-secondary-900 group-hover:text-primary-600 transition-colors">{item.name}</h3>
                 <div className="mt-4 flex space-x-2">

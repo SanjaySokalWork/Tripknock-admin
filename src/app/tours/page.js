@@ -39,7 +39,7 @@ export default function ToursPage() {
 
     async function loadDataOne() {
       try {
-        let res = await fetch("http://localhost:5000/package/load")
+        let res = await fetch("https://data.tripknock.in/package/load")
         let result = await res.json();
 
         if (result.theme) {
@@ -55,7 +55,7 @@ export default function ToursPage() {
 
     async function fetchData() {
       try {
-        const res = await fetch("http://localhost:5000/package/all");
+        const res = await fetch("https://data.tripknock.in/package/all");
         const data = await res.json();
         let newData = [];
         // console.log(data);
@@ -94,7 +94,7 @@ export default function ToursPage() {
   const confirmDelete = async () => {
     setLoading('deleteTour', true, 'Deleting tour...');
     try {
-      let check = await fetch("http://localhost:5000/package/delete", {
+      let check = await fetch("https://data.tripknock.in/package/delete", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -16,7 +16,7 @@ export default function BlogComments({ blogId, blogSlug }) {
     const fetchComments = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:5000/blog/comments/${blogId}`);
+        const response = await fetch(`https://data.tripknock.in/blog/comments/${blogId}`);
         const data = await response.json();
         setComments(data);
         setLoading(false);
@@ -36,7 +36,7 @@ export default function BlogComments({ blogId, blogSlug }) {
     
     setSubmitting(true);
     try {
-      const response = await fetch('http://localhost:5000/blog/comments/add', {
+      const response = await fetch('https://data.tripknock.in/blog/comments/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

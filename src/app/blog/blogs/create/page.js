@@ -84,7 +84,7 @@ export default function CreateBlog() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:5000/blog/categories/all');
+      const response = await fetch('https://data.tripknock.in/blog/categories/all');
       if (response.ok) {
         const data = await response.json();
         // Transform data to match the expected format
@@ -103,7 +103,7 @@ export default function CreateBlog() {
 
   const fetchBloggers = async () => {
     try {
-      const response = await fetch('http://localhost:5000/user/by-role/blogger');
+      const response = await fetch('https://data.tripknock.in/user/by-role/blogger');
 
       if (response.ok) {
         const data = await response.json();
@@ -182,7 +182,7 @@ export default function CreateBlog() {
       }
 
       // Send request to backend
-      const response = await fetch('http://localhost:5000/blog/create', {
+      const response = await fetch('https://data.tripknock.in/blog/create', {
         method: 'POST',
         headers: {
           'admin': JSON.parse(Cookies.get('tk_auth_details')).email

@@ -101,7 +101,7 @@ export default function HomepageManager() {
   const loadData = async () => {
     try {
       setLoading('loadData', true, 'Loading data...');
-      const response = await fetch('http://localhost:5000/homepage/load');
+      const response = await fetch('https://data.tripknock.in/homepage/load');
       if (response.ok) {
         const data = await response.json();
         setLoadOptions(data);
@@ -117,14 +117,14 @@ export default function HomepageManager() {
   const loadHomepageData = async () => {
     try {
       setLoading('loadHomepage', true, 'Loading homepage data...');
-      const response = await fetch('http://localhost:5000/homepage/get');
+      const response = await fetch('https://data.tripknock.in/homepage/get');
       if (response.ok) {
         const data = await response.json();
         let banners = data.banners;
         banners.forEach(banner => {
           banner.previewImage = null;
-          if (banner.image && banner.image.startsWith('http://localhost:5000/uploads/')) {
-            banner.image = banner.image.replace('http://localhost:5000/uploads/', '');
+          if (banner.image && banner.image.startsWith('https://data.tripknock.in/uploads/')) {
+            banner.image = banner.image.replace('https://data.tripknock.in/uploads/', '');
           } else if (banner.image && banner.image.startsWith('/uploads/')) {
             banner.image = banner.image.replace('/uploads/', '');
           }
@@ -207,7 +207,7 @@ export default function HomepageManager() {
     });
 
     const currentBanner = formData.banners[index];
-    const imageUrl = currentBanner.previewImage || (typeof currentBanner.image === 'string' && currentBanner.image ? `http://localhost:5000/uploads/${currentBanner.image}` : currentBanner.image);
+    const imageUrl = currentBanner.previewImage || (typeof currentBanner.image === 'string' && currentBanner.image ? `https://data.tripknock.in/uploads/${currentBanner.image}` : currentBanner.image);
 
     return (
       <div
@@ -351,7 +351,7 @@ export default function HomepageManager() {
         }
       });
 
-      const response = await fetch('http://localhost:5000/homepage/save', {
+      const response = await fetch('https://data.tripknock.in/homepage/save', {
         method: 'POST',
         headers: {
           'admin': JSON.parse(Cookies.get('tk_auth_details')).email

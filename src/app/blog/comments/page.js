@@ -45,7 +45,7 @@ export default function CommentsPage() {
       }
 
       const adminData = JSON.parse(authCookie);
-      const response = await fetch('http://localhost:5000/blog/comments/all', {
+      const response = await fetch('https://data.tripknock.in/blog/comments/all', {
         headers: {
           'admin': adminData.email
         }
@@ -104,7 +104,7 @@ export default function CommentsPage() {
       }
 
       const adminData = JSON.parse(authCookie);
-      const response = await fetch('http://localhost:5000/blog/comments/edit', {
+      const response = await fetch('https://data.tripknock.in/blog/comments/edit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -160,7 +160,7 @@ export default function CommentsPage() {
       }
 
       const adminData = JSON.parse(authCookie);
-      const response = await fetch(`http://localhost:5000/blog/comments/delete/${deleteComment.id}`, {
+      const response = await fetch(`https://data.tripknock.in/blog/comments/delete/${deleteComment.id}`, {
         method: 'DELETE',
         headers: {
           'admin': adminData.email
@@ -211,7 +211,7 @@ export default function CommentsPage() {
       }
 
       const adminData = JSON.parse(authCookie);
-      const response = await fetch(`http://localhost:5000/blog/comments/moderate/${comment.id}`, {
+      const response = await fetch(`https://data.tripknock.in/blog/comments/moderate/${comment.id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -269,7 +269,7 @@ export default function CommentsPage() {
       }
 
       const adminData = JSON.parse(authCookie);
-      const response = await fetch('http://localhost:5000/blog/comments/admin-reply', {
+      const response = await fetch('https://data.tripknock.in/blog/comments/admin-reply', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

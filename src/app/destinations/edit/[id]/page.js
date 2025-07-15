@@ -80,7 +80,7 @@ export default function EditDestination({ params }) {
   // Fetch themes from backend
   const fetchThemes = async () => {
     try {
-      const response = await fetch('http://localhost:5000/theme/all');
+      const response = await fetch('https://data.tripknock.in/theme/all');
       const themesData = await response.json();
       if (themesData && Array.isArray(themesData)) {
         setThemes(themesData);
@@ -103,7 +103,7 @@ export default function EditDestination({ params }) {
     ];
     let cuntries = []
     async function fetchData() {
-      let res = await fetch("http://localhost:5000/destination/load");
+      let res = await fetch("https://data.tripknock.in/destination/load");
       let data = await res.json();
       if (data.pachages) {
         mockTours = []
@@ -123,7 +123,7 @@ export default function EditDestination({ params }) {
 
     const fetchTours = async () => {
       try {
-        let res = await fetch("http://localhost:5000/destination/get/" + id);
+        let res = await fetch("https://data.tripknock.in/destination/get/" + id);
         res = await res.json();
         let data = {
           metaTitle: res.meta.title,
@@ -155,7 +155,7 @@ export default function EditDestination({ params }) {
         // Create preview images for display
         let destinationImage = await Promise.all(
           res.images.map(async (img) => {
-            let response = await fetch(`http://localhost:5000/uploads/${img}`);
+            let response = await fetch(`https://data.tripknock.in/uploads/${img}`);
             let blob = await response.blob();
             return URL.createObjectURL(blob);
           })
@@ -173,7 +173,7 @@ export default function EditDestination({ params }) {
 
   async function validateSlug(slug) {
     if (slug === '') return false;
-    const response = await fetch('http://localhost:5000/destination/validate', {
+    const response = await fetch('https://data.tripknock.in/destination/validate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -188,7 +188,7 @@ export default function EditDestination({ params }) {
 
   async function validateType(type) {
     if (type === '') return false;
-    const response = await fetch('http://localhost:5000/destination/validate-destination', {
+    const response = await fetch('https://data.tripknock.in/destination/validate-destination', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -202,7 +202,7 @@ export default function EditDestination({ params }) {
   }
 
   async function fetchPopularPackages(dname, cname) {
-    let res = await fetch("http://localhost:5000/destination/popular-packages", {
+    let res = await fetch("https://data.tripknock.in/destination/popular-packages", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -398,7 +398,7 @@ export default function EditDestination({ params }) {
         }
       }
 
-      let res = await fetch(`http://localhost:5000/destination/update/${formData.slug}`, {
+      let res = await fetch(`https://data.tripknock.in/destination/update/${formData.slug}`, {
         method: 'POST',
         headers: {
           'admin': JSON.parse(Cookies.get('tk_auth_details')).email

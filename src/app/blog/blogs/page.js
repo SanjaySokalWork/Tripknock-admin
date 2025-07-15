@@ -40,7 +40,7 @@ export default function ArticlesPage() {
 
   const fetchArticles = async () => {
     try {
-      const response = await fetch('http://localhost:5000/blog/all');
+      const response = await fetch('https://data.tripknock.in/blog/all');
       if (response.ok) {
         const data = await response.json();
         setArticles(data);
@@ -57,7 +57,7 @@ export default function ArticlesPage() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:5000/blog/categories/all');
+      const response = await fetch('https://data.tripknock.in/blog/categories/all');
       if (response.ok) {
         const data = await response.json();
         setCategories(data);
@@ -121,7 +121,7 @@ export default function ArticlesPage() {
 
       const adminEmail = JSON.parse(authCookie).email;
 
-      const response = await fetch(`http://localhost:5000/blog/delete/${deleteArticle.id}`, {
+      const response = await fetch(`https://data.tripknock.in/blog/delete/${deleteArticle.id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

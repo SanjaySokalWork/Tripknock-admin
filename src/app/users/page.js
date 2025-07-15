@@ -36,7 +36,7 @@ export default function Users() {
         let userEmail = JSON.parse(Cookies.get('tk_auth_details')).email;
         setCurrentUser(userEmail);
 
-        let res = await fetch('http://localhost:5000/user/all', {
+        let res = await fetch('https://data.tripknock.in/user/all', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ export default function Users() {
 
     setLoading('deleteUser', true, `Deleting user: ${deleteItem.name}...`);
     try {
-      let res = await fetch(`http://localhost:5000/user/delete`, {
+      let res = await fetch(`https://data.tripknock.in/user/delete`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -196,7 +196,7 @@ export default function Users() {
 
     try {
       if (editingUser !== null) {
-        let res = await fetch('http://localhost:5000/user/update', {
+        let res = await fetch('https://data.tripknock.in/user/update', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -224,7 +224,7 @@ export default function Users() {
           throw new Error(data.message || 'Failed to update user');
         }
       } else {
-        let res = await fetch('http://localhost:5000/user/add', {
+        let res = await fetch('https://data.tripknock.in/user/add', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

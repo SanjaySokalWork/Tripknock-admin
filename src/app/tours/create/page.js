@@ -173,7 +173,7 @@ export default function CreateTour() {
 
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/package/load");
+        const response = await fetch("https://data.tripknock.in/package/load");
         const result = await response.json();
 
         if (result.season) {
@@ -231,7 +231,7 @@ export default function CreateTour() {
 
   const validateSlug = (slug) => {
     if (slug === '') return false;
-    fetch("http://localhost:5000/package/check", {
+    fetch("https://data.tripknock.in/package/check", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -746,7 +746,7 @@ export default function CreateTour() {
         formData2.append('images', formData.images[i]);
       }
 
-      const dataPost = await fetch('http://localhost:5000/package/create', {
+      const dataPost = await fetch('https://data.tripknock.in/package/create', {
         method: 'POST',
         headers: {
           'admin': JSON.parse(Cookies.get('tk_auth_details')).email

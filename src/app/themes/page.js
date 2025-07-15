@@ -45,7 +45,7 @@ export default function DestinationsPage() {
     setLoading('fetchThemePages', true, 'Loading theme pages...');
     async function fetchAll() {
       try {
-        const response = await fetch('http://localhost:5000/themes-pages/all');
+        const response = await fetch('https://data.tripknock.in/themes-pages/all');
         const data = await response.json();
         if (data.status === false) {
           showError('Error fetching theme pages: ' + data.message);
@@ -109,7 +109,7 @@ export default function DestinationsPage() {
   const confirmDelete = async (id) => {
     setLoading('deleteThemePage', true, 'Deleting theme page...');
     try {
-      let res = await fetch(`http://localhost:5000/themes-pages/delete`, {
+      let res = await fetch(`https://data.tripknock.in/themes-pages/delete`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

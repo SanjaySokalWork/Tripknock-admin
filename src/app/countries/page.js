@@ -26,7 +26,7 @@ export default function Countries() {
     setLoading('fetchCountries', true, 'Loading countries...');
     async function fetchData() {
       try {
-        let res = await fetch('http://localhost:5000/country/all');
+        let res = await fetch('https://data.tripknock.in/country/all');
         let data = await res.json();
         if (data.status === false) {
           showError('An error occurred while loading countries');
@@ -84,7 +84,7 @@ export default function Countries() {
 
     try {
       if (editItem !== null) {
-        let res = await fetch('http://localhost:5000/country/update', {
+        let res = await fetch('https://data.tripknock.in/country/update', {
           method: 'POST',
           headers: {
             'admin': JSON.parse(Cookies.get('tk_auth_details')).email
@@ -99,7 +99,7 @@ export default function Countries() {
           showError('Failed to update country');
         }
       } else {
-        let res = await fetch('http://localhost:5000/country/create', {
+        let res = await fetch('https://data.tripknock.in/country/create', {
           method: 'POST',
           headers: {
             'admin': JSON.parse(Cookies.get('tk_auth_details')).email
@@ -127,7 +127,7 @@ export default function Countries() {
   const confirmDelete = async () => {
     setLoading('deleteCountry', true, 'Deleting country...');
     try {
-      const response = await fetch('http://localhost:5000/country/delete', {
+      const response = await fetch('https://data.tripknock.in/country/delete', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -178,7 +178,7 @@ export default function Countries() {
           >
             <div className="aspect-w-16 aspect-h-9 bg-secondary-100">
               <img
-                src={"http://localhost:5000/uploads/" + item.image}
+                src={"https://data.tripknock.in/uploads/" + item.image}
                 alt={item.name}
                 className="w-full h-full object-cover"
               />

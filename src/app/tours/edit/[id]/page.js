@@ -170,7 +170,7 @@ export default function EditTour({ params }) {
     const fetchData = async () => {
       try {
         // Load reference data
-        let res = await fetch("http://localhost:5000/package/load")
+        let res = await fetch("https://data.tripknock.in/package/load")
         let result = await res.json()
         if (result.season) {
           let newSeason = []
@@ -217,7 +217,7 @@ export default function EditTour({ params }) {
         }
 
         // Load tour data
-        let tourRes = await fetch(`http://localhost:5000/package/get/${id}`)
+        let tourRes = await fetch(`https://data.tripknock.in/package/get/${id}`)
         let tourData = await tourRes.json();
 
         // Transform destinations to IDs for formData
@@ -248,7 +248,7 @@ export default function EditTour({ params }) {
           setFormData(prev => ({ ...prev, ...tourData }))
           let previewImages = await Promise.all(
             tourData.images.map(async (img) => {
-              let response = await fetch(`http://localhost:5000/uploads/${img}`);
+              let response = await fetch(`https://data.tripknock.in/uploads/${img}`);
               let blob = await response.blob();
               return URL.createObjectURL(blob);
             })
@@ -272,7 +272,7 @@ export default function EditTour({ params }) {
 
   const validateSlug = (slug) => {
     if (slug === '') return false;
-    fetch("http://localhost:5000/package/check", {
+    fetch("https://data.tripknock.in/package/check", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -712,7 +712,7 @@ export default function EditTour({ params }) {
         }
       }
 
-      const dataPost = await fetch(`http://localhost:5000/package/update/${id}`, {
+      const dataPost = await fetch(`https://data.tripknock.in/package/update/${id}`, {
         method: 'POST',
         headers: {
           'admin': JSON.parse(Cookies.get('tk_auth_details')).email

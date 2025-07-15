@@ -71,7 +71,7 @@ export default function CreateDestination() {
   // Fetch themes from backend
   const fetchThemes = async () => {
     try {
-      const response = await fetch('http://localhost:5000/theme/all');
+      const response = await fetch('https://data.tripknock.in/theme/all');
       const themesData = await response.json();
       if (themesData && Array.isArray(themesData)) {
         setThemes(themesData);
@@ -98,7 +98,7 @@ export default function CreateDestination() {
         ];
 
         async function fetchData() {
-          let res = await fetch("http://localhost:5000/themes-pages/load");
+          let res = await fetch("https://data.tripknock.in/themes-pages/load");
           let data = await res.json();
           // For Popular Destination, use destinations
           if (data.destinations) {
@@ -130,7 +130,7 @@ export default function CreateDestination() {
   }, []);
 
   const fetchPackages = async (category) => {
-    let res = await fetch(`http://localhost:5000/themes-pages/get-packages`, {
+    let res = await fetch(`https://data.tripknock.in/themes-pages/get-packages`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -148,7 +148,7 @@ export default function CreateDestination() {
   }
 
   const validateTheme = async (from, category) => {
-    let res = await fetch(`http://localhost:5000/themes-pages/validate-theme`, {
+    let res = await fetch(`https://data.tripknock.in/themes-pages/validate-theme`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -164,7 +164,7 @@ export default function CreateDestination() {
 
   async function validateSlug(slug) {
     if (slug === '') return false;
-    const response = await fetch('http://localhost:5000/themes-pages/validate', {
+    const response = await fetch('https://data.tripknock.in/themes-pages/validate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -295,7 +295,7 @@ export default function CreateDestination() {
         formDataToSend.append('images', image);
       });
 
-      let res = await fetch("http://localhost:5000/themes-pages/create", {
+      let res = await fetch("https://data.tripknock.in/themes-pages/create", {
         method: 'POST',
         headers: {
           'admin': JSON.parse(Cookies.get('tk_auth_details')).email

@@ -83,7 +83,7 @@ export default function CreateDestination() {
   // Fetch themes from backend
   const fetchThemes = async () => {
     try {
-      const response = await fetch('http://localhost:5000/theme/all');
+      const response = await fetch('https://data.tripknock.in/theme/all');
       const themesData = await response.json();
       if (themesData && Array.isArray(themesData)) {
         setThemes(themesData);
@@ -108,7 +108,7 @@ export default function CreateDestination() {
         ];
         let cuntries = []
         async function fetchData() {
-          let res = await fetch("http://localhost:5000/destination/load");
+          let res = await fetch("https://data.tripknock.in/destination/load");
           let data = await res.json();
           if (data.pachages) {
             mockTours = []
@@ -135,7 +135,7 @@ export default function CreateDestination() {
 
   async function validateSlug(slug) {
     if (slug === '') return false;
-    const response = await fetch('http://localhost:5000/destination/validate', {
+    const response = await fetch('https://data.tripknock.in/destination/validate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -150,7 +150,7 @@ export default function CreateDestination() {
 
   async function validateType(type) {
     if (type === '') return false;
-    const response = await fetch('http://localhost:5000/destination/validate-destination', {
+    const response = await fetch('https://data.tripknock.in/destination/validate-destination', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -164,7 +164,7 @@ export default function CreateDestination() {
   }
 
   async function fetchPopularPackages(dname, cname) {
-    const response = await fetch(`http://localhost:5000/destination/popular-packages`, {
+    const response = await fetch(`https://data.tripknock.in/destination/popular-packages`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -324,7 +324,7 @@ export default function CreateDestination() {
         formDataToSend.append('images', image);
       });
 
-      let res = await fetch("http://localhost:5000/destination/create", {
+      let res = await fetch("https://data.tripknock.in/destination/create", {
         method: 'POST',
         headers: {
           'admin': JSON.parse(Cookies.get('tk_auth_details')).email

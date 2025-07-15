@@ -144,7 +144,7 @@ export default function CategoriesPage() {
   const fetchCategories = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/blog/categories/all');
+      const response = await fetch('https://data.tripknock.in/blog/categories/all');
       if (!response.ok) {
         throw new Error('Failed to fetch categories');
       }
@@ -170,7 +170,7 @@ export default function CategoriesPage() {
       
       const adminEmail = JSON.parse(authCookie).email;
       
-      const response = await fetch('http://localhost:5000/blog/categories/create', {
+      const response = await fetch('https://data.tripknock.in/blog/categories/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -208,7 +208,7 @@ export default function CategoriesPage() {
       
       const adminEmail = JSON.parse(authCookie).email;
       
-      const response = await fetch(`http://localhost:5000/blog/categories/update/${editingCategory.id}`, {
+      const response = await fetch(`https://data.tripknock.in/blog/categories/update/${editingCategory.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -246,7 +246,7 @@ export default function CategoriesPage() {
       
       const adminEmail = JSON.parse(authCookie).email;
       
-      const response = await fetch(`http://localhost:5000/blog/categories/delete/${deleteCategory.id}`, {
+      const response = await fetch(`https://data.tripknock.in/blog/categories/delete/${deleteCategory.id}`, {
         method: 'DELETE',
         headers: {
           'admin': adminEmail
